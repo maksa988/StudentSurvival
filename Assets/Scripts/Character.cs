@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Character : Unit
@@ -12,11 +13,12 @@ public class Character : Unit
     private float jumpForce = 15.0F;
 
     private bool isGrounded = false;
+    private Image fadeLoader;
 
     private CharState State
     {
         get { return (CharState)animator.GetInteger("State"); }
-        set { animator.SetInteger("State", (int)value); }
+        set { animator.SetInteger("State", (int) value); }
     }
 
     new private Rigidbody2D rigidbody;
@@ -28,6 +30,7 @@ public class Character : Unit
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         sprite = GetComponentInChildren<SpriteRenderer>();
+        fadeLoader = GameObject.FindGameObjectWithTag("FadeLoader").GetComponent<Image>();
     }
 
     private void FixedUpdate()
@@ -38,21 +41,15 @@ public class Character : Unit
     private void Update()
     {
         if (isGrounded) State = CharState.Idle;
-        
+
         if (Input.GetButton("Horizontal")) Run();
         if (isGrounded && Input.GetButtonDown("Jump")) Jump();
-        if (Input.GetButton("Fire1"))
-        {
-            Debug.Log("TP");
-            Vector3 zero = transform.position;
-            zero.x = 2;
-            zero.y = 2;
-            
-        }
+        if (Input.GetButton("Action")) Action();
     }
 
     private void Run()
     {
+        Fade();
         Vector3 direction = transform.right * Input.GetAxis("Horizontal");
 
         transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, speed * Time.deltaTime);
@@ -66,9 +63,33 @@ public class Character : Unit
         rigidbody.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
     }
 
+    private void Action()
+    {
+        foreach(GameObject other in GameObject.FindGameObjectsWithTag("TeleportEnters"))
+        {
+            Teleport teleport = other.GetComponent<Teleport>();
+
+            if (teleport.NearDoors)
+            {
+                if (!teleport.IsAvaliable)
+                    GameObject.FindGameObjectWithTag("DoorStatusText").GetComponent<Text>().text = "Locked";
+                else
+                    GameObject.FindGameObjectWithTag("DoorStatusText").GetComponent<Text>().text = "Avaliable";
+
+                
+                teleport.Activate(transform);
+            }
+        }
+    }
+
+    private void Fade()
+    {
+        fadeLoader.color = new Color(fadeLoader.color.a, fadeLoader.color.g, fadeLoader.color.b, 0.5F);
+    }
+
     private void CheckGround()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 1.3F);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.3F);
 
         isGrounded = colliders.Length > 1;
 
