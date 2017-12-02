@@ -4,13 +4,47 @@ using UnityEngine;
 
 public class AudioController : MonoBehaviour {
 
-	public void Play()
-    {
-        AudioSource aso = GetComponent<AudioSource>();
+    [SerializeField]
+    private bool playTriggered = false;
+    [SerializeField]
+    private bool stopTriggered = false;
 
-        if(!aso.isPlaying)
+    private AudioSource audioSource;
+
+    private void Awake()
+    {
+        this.audioSource = GetComponent<AudioSource>();
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(this.playTriggered)
         {
-            aso.Play();
+            this.Play();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (this.stopTriggered)
+        {
+            this.Stop();
+        }
+    }
+
+    public void Play()
+    {
+        if(!this.audioSource.isPlaying)
+        {
+            this.audioSource.Play();
+        }
+    }
+
+    public void Stop()
+    {
+        if(this.audioSource.isPlaying)
+        {
+            this.audioSource.Stop();
         }
     }
 }
