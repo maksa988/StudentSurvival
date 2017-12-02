@@ -76,9 +76,7 @@ public class Character : Unit
             if (teleport.NearDoors)
             {
                 if (!teleport.IsAvaliable)
-                {
                     GameObject.FindGameObjectWithTag("DoorStatusText").GetComponent<Text>().text = "Locked";
-                }
                 else
                     GameObject.FindGameObjectWithTag("DoorStatusText").GetComponent<Text>().text = "Avaliable";
 
