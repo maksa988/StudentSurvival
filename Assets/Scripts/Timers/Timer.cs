@@ -11,7 +11,9 @@ public class Timer : MonoBehaviour {
     private bool timerPaused = false;
 
     [SerializeField]
-    public AbstractTimeProvider provider;
+    public GameObject timer;
+
+    private AbstractTimeProvider provider;
 
     public float TimerTime
     {
@@ -21,9 +23,11 @@ public class Timer : MonoBehaviour {
         }
     }
 
-	private void Start ()
+	private void Start()
     {
-		
+        Debug.Log("Timer awake");
+        this.provider = this.timer.GetComponent<AbstractTimeProvider>();
+        this.provider.Awake();
 	}
 
     public void StartTimer()

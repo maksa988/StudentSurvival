@@ -2,9 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FadeLoaderTimer : AbstractTimeProvider
 {
+    private Image fadeLoader;
+    private float opacity = 1;
+
+    public override void Awake()
+    {
+        this.fadeLoader = GameObject.FindGameObjectWithTag("FadeLoader").GetComponent<Image>();
+    }
+
     public override void TimerEnded()
     {
         Debug.Log("TimerEnded");
@@ -32,6 +41,13 @@ public class FadeLoaderTimer : AbstractTimeProvider
 
     public override void TimerUpdated()
     {
+        Fade();
         Debug.Log("TimerUpdated");
+    }
+
+    private void Fade()
+    {
+        opacity -= 0.1F;
+        fadeLoader.color = new Color(fadeLoader.color.a, fadeLoader.color.g, fadeLoader.color.b, opacity);
     }
 }

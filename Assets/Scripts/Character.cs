@@ -13,7 +13,6 @@ public class Character : Unit
     private float jumpForce = 15.0F;
 
     private bool isGrounded = false;
-    private Image fadeLoader;
 
     private CharState State
     {
@@ -27,10 +26,13 @@ public class Character : Unit
 
     private void Awake()
     {
+        Timer fadeLoader = GameObject.FindGameObjectWithTag("FadeLoaderTimer").GetComponent<Timer>();
+        //fadeLoader.Awake();
+        //fadeLoader.StartTimer();
+
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         sprite = GetComponentInChildren<SpriteRenderer>();
-        fadeLoader = GameObject.FindGameObjectWithTag("FadeLoader").GetComponent<Image>();
     }
 
     private void FixedUpdate()
@@ -49,7 +51,6 @@ public class Character : Unit
 
     private void Run()
     {
-        Fade();
         Vector3 direction = transform.right * Input.GetAxis("Horizontal");
 
         transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, speed * Time.deltaTime);
@@ -80,11 +81,6 @@ public class Character : Unit
                 teleport.Activate(transform);
             }
         }
-    }
-
-    private void Fade()
-    {
-        fadeLoader.color = new Color(fadeLoader.color.a, fadeLoader.color.g, fadeLoader.color.b, 0.5F);
     }
 
     private void CheckGround()
