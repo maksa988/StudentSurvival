@@ -1,9 +1,37 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: b6034d6918bd96a48a9d2317df806b25
 timeCreated: 1512207915
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
+=======
+guid: 584216b1b570766409b4de4ec0a35618
+timeCreated: 1512214772
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: sprite_main_character_0
+    21300002: sprite_main_character_1
+    21300004: sprite_main_character_2
+    21300006: sprite_main_character_3
+    21300008: sprite_main_character_4
+    21300010: sprite_main_character_5
+    21300012: sprite_main_character_6
+    21300014: sprite_main_character_7
+    21300016: sprite_main_character_8
+    21300018: sprite_main_character_9
+    21300020: sprite_main_character_10
+    21300022: sprite_main_character_11
+    21300024: sprite_main_character_12
+    21300026: sprite_main_character_13
+    21300028: sprite_main_character_14
+    21300030: sprite_main_character_15
+    21300032: sprite_main_character_16
+    21300034: sprite_main_character_17
+    21300036: sprite_main_character_18
+    21300038: sprite_main_character_19
+>>>>>>> c09d7e9e02a61f55def353693ab7d21d2e4a5a81
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -40,7 +68,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
+<<<<<<< HEAD
   spriteMode: 1
+=======
+  spriteMode: 2
+>>>>>>> c09d7e9e02a61f55def353693ab7d21d2e4a5a81
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -65,9 +97,304 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+<<<<<<< HEAD
   spriteSheet:
     serializedVersion: 2
     sprites: []
+=======
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sprite_main_character_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 216
+        width: 11
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_main_character_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 216
+        width: 11
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_main_character_2
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 216
+        width: 11
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_main_character_3
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 216
+        width: 19
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_main_character_4
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 216
+        width: 17
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_main_character_5
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 216
+        width: 15
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_main_character_6
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 216
+        width: 14
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_main_character_7
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 216
+        width: 16
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_main_character_8
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 216
+        width: 15
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_main_character_9
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 216
+        width: 14
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_main_character_10
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 216
+        width: 15
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_main_character_11
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 216
+        width: 17
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_main_character_12
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 216
+        width: 19
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_main_character_13
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 173
+        width: 11
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_main_character_14
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 173
+        width: 11
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_main_character_15
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 173
+        width: 11
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_main_character_16
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 173
+        width: 11
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_main_character_17
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 173
+        width: 11
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_main_character_18
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 173
+        width: 17
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_main_character_19
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 173
+        width: 15
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+>>>>>>> c09d7e9e02a61f55def353693ab7d21d2e4a5a81
     outline: []
     physicsShape: []
   spritePackingTag: 
