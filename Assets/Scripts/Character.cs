@@ -2,6 +2,13 @@
 using UnityEngine.UI;
 using System.Collections;
 
+public enum CharState
+{
+    Idle,
+    Run,
+    Jump
+}
+
 public class Character : Unit
 {
     [SerializeField]
@@ -26,10 +33,6 @@ public class Character : Unit
 
     private void Awake()
     {
-        Timer fadeLoader = GameObject.FindGameObjectWithTag("FadeLoaderTimer").GetComponent<Timer>();
-        //fadeLoader.Awake();
-        //fadeLoader.StartTimer();
-
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         sprite = GetComponentInChildren<SpriteRenderer>();
@@ -73,7 +76,9 @@ public class Character : Unit
             if (teleport.NearDoors)
             {
                 if (!teleport.IsAvaliable)
+                {
                     GameObject.FindGameObjectWithTag("DoorStatusText").GetComponent<Text>().text = "Locked";
+                }
                 else
                     GameObject.FindGameObjectWithTag("DoorStatusText").GetComponent<Text>().text = "Avaliable";
 
@@ -96,12 +101,4 @@ public class Character : Unit
     {
         
     }
-}
-
-
-public enum CharState
-{
-    Idle,
-    Run,
-    Jump
 }

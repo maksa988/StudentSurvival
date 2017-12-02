@@ -63,7 +63,7 @@ public class guiConsole : MonoBehaviour
         if (enableConsole)
         {
             consoleWindow = new Rect(0, 0, Screen.width, Screen.height / 3);
-            consoleWindow = GUI.Window(0, consoleWindow, consoleControls, "Console [Beta version]");
+            consoleWindow = GUI.Window(0, consoleWindow, consoleControls, "Console");
         }
         if (enableHelp)
         {

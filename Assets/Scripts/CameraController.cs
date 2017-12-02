@@ -45,7 +45,7 @@ public class CameraController : MonoBehaviour
     }
 
     // найти персонажа, если он был уничтожен, а потом возрожден
-    // для вызова из другого класса, пишем: Camera2DFollowTDS.use.FindPlayer();
+    // для вызова из другого класса, пишем: CameraController.use.FindPlayer();
     public void FindPlayer()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -70,7 +70,6 @@ public class CameraController : MonoBehaviour
 
     Vector3 MoveInside(Vector3 current, Vector3 pMin, Vector3 pMax)
     {
-        if (!useBounds || boundsMap == null) return current;
         current = Vector3.Max(current, pMin);
         current = Vector3.Min(current, pMax);
         return current;
@@ -87,7 +86,8 @@ public class CameraController : MonoBehaviour
     {
         if (face == Mode.Player) direction = player.right; else direction = (Mouse() - player.position).normalized;
         Vector3 position = player.position + direction * offset;
-        position.z = transform.position.z;
+        position.z = -10.0F;
+        position.y += 2.8F;
         position = MoveInside(position, new Vector3(min.x, min.y, position.z), new Vector3(max.x, max.y, position.z));
         transform.position = Vector3.Lerp(transform.position, position, smooth * Time.deltaTime);
     }
