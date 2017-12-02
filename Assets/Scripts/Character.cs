@@ -2,6 +2,13 @@
 using UnityEngine.UI;
 using System.Collections;
 
+public enum CharState
+{
+    Idle,
+    Run,
+    Jump
+}
+
 public class Character : Unit
 {
     [SerializeField]
@@ -13,7 +20,6 @@ public class Character : Unit
     private float jumpForce = 15.0F;
 
     private bool isGrounded = false;
-    private Image fadeLoader;
 
     private CharState State
     {
@@ -30,7 +36,6 @@ public class Character : Unit
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         sprite = GetComponentInChildren<SpriteRenderer>();
-        fadeLoader = GameObject.FindGameObjectWithTag("FadeLoader").GetComponent<Image>();
     }
 
     private void FixedUpdate()
@@ -49,7 +54,6 @@ public class Character : Unit
 
     private void Run()
     {
-        Fade();
         Vector3 direction = transform.right * Input.GetAxis("Horizontal");
 
         transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, speed * Time.deltaTime);
@@ -72,7 +76,9 @@ public class Character : Unit
             if (teleport.NearDoors)
             {
                 if (!teleport.IsAvaliable)
+                {
                     GameObject.FindGameObjectWithTag("DoorStatusText").GetComponent<Text>().text = "Locked";
+                }
                 else
                     GameObject.FindGameObjectWithTag("DoorStatusText").GetComponent<Text>().text = "Avaliable";
 
@@ -80,11 +86,6 @@ public class Character : Unit
                 teleport.Activate(transform);
             }
         }
-    }
-
-    private void Fade()
-    {
-        fadeLoader.color = new Color(fadeLoader.color.a, fadeLoader.color.g, fadeLoader.color.b, 0.5F);
     }
 
     private void CheckGround()
@@ -100,12 +101,4 @@ public class Character : Unit
     {
         
     }
-}
-
-
-public enum CharState
-{
-    Idle,
-    Run,
-    Jump
 }

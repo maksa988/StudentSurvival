@@ -1,9 +1,11 @@
 fileFormatVersion: 2
-guid: d3f9fa4188f8bc04ab9609d69ee5aae3
-timeCreated: 1512157418
+guid: a3f164896172c22418952185fb9ed17b
+timeCreated: 1512226057
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: DoorOpen_0
+    21300002: DoorOpen_1
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -40,13 +42,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 47
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -76,7 +78,35 @@ TextureImporter:
     overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: DoorOpen_0
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 9
+        width: 100
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DoorOpen_1
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 9
+        width: 100
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
     outline: []
     physicsShape: []
   spritePackingTag: 
