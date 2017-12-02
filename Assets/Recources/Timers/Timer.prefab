@@ -35,7 +35,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4738281650014678}
-  - component: {fileID: 114970044682059052}
   m_Layer: 0
   m_Name: TimerAction
   m_TagString: Untagged
@@ -83,14 +82,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startTime: 60
   timer: {fileID: 1575540239253434}
---- !u!114 &114970044682059052
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1575540239253434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e96b6ffd2af75c449066c7deecdd25c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
