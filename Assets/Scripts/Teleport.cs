@@ -23,6 +23,7 @@ public class Teleport : MonoBehaviour
 
     public Transform target;
     private Transform player;
+    private AudioSource audioSource;
 
     public bool NearDoors
     {
@@ -45,7 +46,13 @@ public class Teleport : MonoBehaviour
 
     private void Awake()
     {
-        this.controller = new TeleportController(this.waitingTime, this.enterObject, this.exitObject);
+        this.audioSource = GetComponent<AudioSource>();
+        if (this.enterObject && this.exitObject) this.controller = new TeleportController(this.waitingTime, this.enterObject, this.exitObject);
+    }
+
+    private void FixUpdate()
+    {
+
     }
 
     private void Update()
@@ -61,7 +68,7 @@ public class Teleport : MonoBehaviour
             }
         }
 
-        this.controller.Update();
+        if(this.controller != null) this.controller.Update();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -78,7 +85,11 @@ public class Teleport : MonoBehaviour
     {
         if (this.avaliable && this.playerInTarget)
         {
-            this.controller.Open();
+            if (this.controller != null)
+            {
+                this.controller.Open();
+                this.audioSource.Play();
+            }
             this.player = player;
             this.curentWTime = this.waitingTime;
             this.waitToTeleport = true;
