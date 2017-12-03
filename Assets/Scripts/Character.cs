@@ -17,7 +17,7 @@ public class Character : Unit
     private int intelligence = 5;
 
     [SerializeField]
-    private float speed = 3.0F;
+    public float speed = 3.0F;
     [SerializeField]
     private float jumpForce = 15.0F;
 
@@ -29,6 +29,8 @@ public class Character : Unit
         get { return (CharState)animator.GetInteger("State"); }
         set { animator.SetInteger("State", (int) value); }
     }
+
+    private BulletLab bullet;
 
     new private Rigidbody2D rigidbody;
     private Animator animator;
@@ -66,6 +68,8 @@ public class Character : Unit
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         sprite = GetComponentInChildren<SpriteRenderer>();
+
+        bullet = Resources.Load<BulletLab>("BulletLab");
     }
 
     private void FixedUpdate()
@@ -80,6 +84,7 @@ public class Character : Unit
         if (Input.GetButton("Horizontal")) Run();
         if (isGrounded && Input.GetButtonDown("Jump")) Jump();
         if (Input.GetButton("Action")) Action();
+        if (Input.GetButtonDown("Fire1")) Shoot();
     }
 
     private void Run()
@@ -90,6 +95,15 @@ public class Character : Unit
         sprite.flipX = direction.x < 0.0F;
 
         if (isGrounded) State = CharState.Run;
+    }
+
+    private void Shoot()
+    {
+        Vector3 position = transform.position; position.y += 1.5F;
+        BulletLab newBullet = Instantiate(bullet, position, bullet.transform.rotation) as BulletLab;
+
+        newBullet.Parent = gameObject;
+        newBullet.Direction = newBullet.transform.right * (sprite.flipX ? -1.0F : 1.0F);
     }
 
     private void Jump()
@@ -125,8 +139,24 @@ public class Character : Unit
         if (!isGrounded) State = CharState.Jump;
     }
 
+    public override void ReceiveDamage()
+    {
+        this.Intelligence--;
+
+        rigidbody.velocity = Vector3.zero;
+        rigidbody.AddForce(transform.up * 8.0F, ForceMode2D.Impulse);
+
+        Debug.Log(this.Intelligence);
+    }
+
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        
+        Unit unit = collider.GetComponent<Unit>();
+        Debug.Log(collider.tag);
+        if (collider.tag == "BulletLab")
+        {
+            if (Mathf.Abs(unit.transform.position.x - transform.position.x) < 0.3F) ReceiveDamage();
+            else unit.ReceiveDamage();
+        }
     }
 }

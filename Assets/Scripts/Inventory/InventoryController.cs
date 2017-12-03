@@ -5,7 +5,7 @@ using UnityEngine;
 public class InventoryController : MonoBehaviour {
 
     [SerializeField]
-    private List<InventoryItem> items = new List<InventoryItem>();
+    private List<InventoryItem> items = new List<InventoryItem>(9);
 
     [SerializeField]
     private GameObject player;
@@ -15,22 +15,44 @@ public class InventoryController : MonoBehaviour {
         if(player == null) player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    private void Update () {
-        if (Input.GetButton("LootBar Item 1")) this.InventoryItemUse(0);
-        if (Input.GetButton("LootBar Item 2")) this.InventoryItemUse(1);
-        if (Input.GetButton("LootBar Item 3")) this.InventoryItemUse(2);
-        if (Input.GetButton("LootBar Item 4")) this.InventoryItemUse(3);
-        if (Input.GetButton("LootBar Item 5")) this.InventoryItemUse(4);
-        if (Input.GetButton("LootBar Item 6")) this.InventoryItemUse(5);
-        if (Input.GetButton("LootBar Item 7")) this.InventoryItemUse(6);
-        if (Input.GetButton("LootBar Item 8")) this.InventoryItemUse(7);
-        if (Input.GetButton("LootBar Item 9")) this.InventoryItemUse(8);
+    private void Update() {
+        if (Input.GetButton("LootBar Item 1"))
+        {
+            this.items[0].Action();
+            HideItem(0);
+        }
+        if (Input.GetButton("LootBar Item 2"))
+        {
+            this.items[1].Action();
+            HideItem(1);
+        }
+        if (Input.GetButton("LootBar Item 3"))
+        {
+            this.items[2].Action();
+            HideItem(2);
+        }
+        if (Input.GetButton("LootBar Item 4"))
+        {
+            this.items[3].Action();
+            HideItem(3);
+        }
+        if (Input.GetButton("LootBar Item 5"))
+        {
+            this.items[4].Action();
+            HideItem(4);
+        }
     }
 
     private void InventoryItemUse(int index)
     {
+        Debug.Log("Нажали кнопочку" + index);
+        Debug.Log("Count k: " + this.items.Count);
+        Debug.Log(this.items.Count > index);
+        Debug.Log(this.items[1]);
         if (this.items.Count > index)
         {
+            Debug.Log("index" + index);
+            Debug.Log(this.items[index]);
             if (this.items[index] == null) return;
             this.items[index].Action();
         }
@@ -42,22 +64,16 @@ public class InventoryController : MonoBehaviour {
 
         if (this.items.Count >= 1)
         {
-            Debug.Log("начинаем поиск места");
             foreach (InventoryItem iitem in this.items)
             {
-                Debug.Log(iitem.itemName + " == " + item.itemName);
-                Debug.Log(iitem);
                 if (iitem.itemName == item.itemName)
                 {
-                    Debug.Log("Добавляем 1");
                     iitem.AddOneMore();
                     break;
-                }
-                else
+                } else
                 {
                     if (iitem == null)
                     {
-                        Debug.Log("Добавляем 2");
                         this.items.Insert(index, item);
                         this.DrawOnLootBox(index, item);
                         break;
@@ -65,20 +81,28 @@ public class InventoryController : MonoBehaviour {
                 }
                 index++;
             }
-            Debug.Log("заканчиваем поиск места");
+
+            if(index == this.items.Count && index != 9)
+            {
+                this.items.Insert(index, item);
+                this.DrawOnLootBox(index, item);
+            }
+            
         } else {
             this.items.Insert(0, item);
             this.DrawOnLootBox(0, item);
-            Debug.Log("Место не искали отрисовали так");
         }
+    }
+
+    private void HideItem(int index)
+    {
+        GameObject other = GameObject.FindGameObjectsWithTag("InventoryItems")[8 - index];other.GetComponent<Renderer>().enabled = true;
+        other.GetComponent<Renderer>().enabled = false;
     }
 
     private void DrawOnLootBox(int index, InventoryItem pickedItem)
     {
-        Debug.Log("Drawing");
-        Debug.Log("Place: " + index);
-
-        GameObject other = GameObject.FindGameObjectsWithTag("InventoryItems")[index];
+        GameObject other = GameObject.FindGameObjectsWithTag("InventoryItems")[8 - index];
         if (other.GetComponent<SpriteRenderer>() == null) other.AddComponent<SpriteRenderer>();
         SpriteRenderer sprite = other.GetComponent<SpriteRenderer>();
         sprite.sprite = pickedItem.sprite.sprite;

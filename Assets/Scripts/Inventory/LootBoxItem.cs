@@ -24,14 +24,12 @@ public class LootBoxItem : MonoBehaviour {
 
     private void Pick()
     {
-        Debug.Log(this.item.itemType);
         this.controller.Add(this.item);
         Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-
         this.playerInTarget = true;
     }
 

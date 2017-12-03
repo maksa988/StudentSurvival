@@ -11,14 +11,16 @@ public class ItemShaverma : InventoryItem {
 
 	public override void Use()
     {
-        this.Parent.GetComponent<Character>().Sleep += 1;
+        Debug.Log("Хаваем");
+        Character player = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
+        player.Sleep += 1;
 
-        if(countItems >= 2)
+        if (countItems >= 2)
         {
             //текст изменяем на кол-во
         } else
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 }

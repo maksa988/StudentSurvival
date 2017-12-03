@@ -10,7 +10,10 @@ public enum ItemTypes
 
 public enum Item
 {
-    Shaverma
+    Shaverma,
+    Book,
+    Lab,
+    EnergyDring
 }
 
 public class InventoryItem : MonoBehaviour {
@@ -32,8 +35,8 @@ public class InventoryItem : MonoBehaviour {
     private GameObject parent;
     public GameObject Parent { set { parent = value; } get { return parent; } }
 
-    private float speed = 10.0F;
-    private Vector3 direction;
+    protected float speed = 10.0F;
+    protected Vector3 direction;
     public Vector3 Direction { set { direction = value; } }
 
     public void AddOneMore()

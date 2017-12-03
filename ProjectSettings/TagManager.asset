@@ -13,6 +13,11 @@ TagManager:
   - InventoryItems
   - LootboxItem
   - Inventory
+  - 'BulletLab '
+  - BulletOcenka
+  - Prepod
+  - WindowsErrorImage
+  - ToolbarImage
   layers:
   - Default
   - TransparentFX
