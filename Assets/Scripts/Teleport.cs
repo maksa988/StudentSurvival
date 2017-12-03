@@ -46,13 +46,8 @@ public class Teleport : MonoBehaviour
 
     private void Awake()
     {
-        this.audioSource = GetComponent<AudioSource>();
+        if (this.enterObject && this.exitObject) this.audioSource = GetComponent<AudioSource>();
         if (this.enterObject && this.exitObject) this.controller = new TeleportController(this.waitingTime, this.enterObject, this.exitObject);
-    }
-
-    private void FixUpdate()
-    {
-
     }
 
     private void Update()
