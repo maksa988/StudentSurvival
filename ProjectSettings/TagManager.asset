@@ -18,6 +18,7 @@ TagManager:
   - Prepod
   - WindowsErrorImage
   - ToolbarImage
+  - HealthBar
   layers:
   - Default
   - TransparentFX
