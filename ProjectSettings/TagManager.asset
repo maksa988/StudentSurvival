@@ -10,6 +10,15 @@ TagManager:
   - FadeLoader
   - FadeLoaderTimer
   - DoorLockedAudio
+  - InventoryItems
+  - LootboxItem
+  - Inventory
+  - 'BulletLab '
+  - BulletOcenka
+  - Prepod
+  - WindowsErrorImage
+  - ToolbarImage
+  - HealthBar
   layers:
   - Default
   - TransparentFX
