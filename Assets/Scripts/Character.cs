@@ -12,13 +12,16 @@ public enum CharState
 public class Character : Unit
 {
     [SerializeField]
-    private int lives = 5;
+    private int sleep = 5;
+    [SerializeField]
+    private int intelligence = 5;
 
     [SerializeField]
     private float speed = 3.0F;
     [SerializeField]
     private float jumpForce = 15.0F;
 
+    private GameObject invtenory;
     private bool isGrounded = false;
 
     private CharState State
@@ -30,6 +33,33 @@ public class Character : Unit
     new private Rigidbody2D rigidbody;
     private Animator animator;
     private SpriteRenderer sprite;
+
+    [SerializeField]
+    public int Sleep
+    {
+        get
+        {
+            return this.sleep;
+        }
+        set
+        {
+            Debug.Log(value);
+            this.sleep = value;
+        }
+    }
+
+    [SerializeField]
+    public int Intelligence
+    {
+        get
+        {
+            return this.intelligence;
+        }
+        set
+        {
+            this.intelligence = value;
+        }
+    }
 
     private void Awake()
     {

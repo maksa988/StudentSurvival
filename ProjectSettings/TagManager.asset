@@ -10,6 +10,9 @@ TagManager:
   - FadeLoader
   - FadeLoaderTimer
   - DoorLockedAudio
+  - InventoryItems
+  - LootboxItem
+  - Inventory
   layers:
   - Default
   - TransparentFX
