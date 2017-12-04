@@ -36,6 +36,9 @@ public class Character : Unit
     private Animator animator;
     private SpriteRenderer sprite;
 
+    private Text sleepText;
+    private Text intelText;
+
     [SerializeField]
     public int Sleep
     {
@@ -47,6 +50,7 @@ public class Character : Unit
         {
             Debug.Log(value);
             this.sleep = value;
+            this.sleepText.text = "Сон: " + this.sleep; 
         }
     }
 
@@ -60,6 +64,7 @@ public class Character : Unit
         set
         {
             this.intelligence = value;
+            this.intelText.text = "Інтелект: " + this.intelligence;
         }
     }
 
@@ -68,6 +73,12 @@ public class Character : Unit
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         sprite = GetComponentInChildren<SpriteRenderer>();
+
+        this.sleepText = GameObject.FindGameObjectWithTag("HealthBarSleep").GetComponent<Text>();
+        this.intelText = GameObject.FindGameObjectWithTag("HealthBarIntel").GetComponent<Text>();
+
+        this.Sleep = this.sleep;
+        this.Intelligence = this.intelligence;
 
         bullet = Resources.Load<BulletLab>("BulletLab");
     }
@@ -91,7 +102,9 @@ public class Character : Unit
     {
         Vector3 direction = transform.right * Input.GetAxis("Horizontal");
 
-        transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, speed * Time.deltaTime);
+        float localSpeed = this.speed + this.sleep;
+
+        transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, localSpeed * Time.deltaTime);
         sprite.flipX = direction.x < 0.0F;
 
         if (isGrounded) State = CharState.Run;
@@ -145,6 +158,12 @@ public class Character : Unit
 
         rigidbody.velocity = Vector3.zero;
         rigidbody.AddForce(transform.up * 8.0F, ForceMode2D.Impulse);
+        
+        if(this.Intelligence <= 0)
+        {
+            //Loose
+            Destroy(gameObject);
+        }
 
         Debug.Log(this.Intelligence);
     }

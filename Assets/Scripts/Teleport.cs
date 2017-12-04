@@ -9,7 +9,7 @@ public class Teleport : MonoBehaviour
     private float curentWTime = 0F;
 
     [SerializeField]
-    private bool avaliable = true;
+    public bool avaliable = true;
     private bool playerInTarget = false;
     private bool waitToTeleport = false;
 

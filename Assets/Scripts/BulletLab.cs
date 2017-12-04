@@ -35,11 +35,12 @@ public class BulletLab : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        Unit unit = collider.GetComponent<Unit>();
+        Unit unit = GameObject.FindGameObjectWithTag("Prepod").GetComponent<Prepod>();
 
-        if (unit && unit.gameObject != parent)
+        if (collider.tag == "Prepod")
         {
             Destroy(gameObject);
+            unit.ReceiveDamage();
         }
     }
 }
