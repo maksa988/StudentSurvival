@@ -19,6 +19,10 @@ TagManager:
   - WindowsErrorImage
   - ToolbarImage
   - HealthBar
+  - HealthBarSleep
+  - HealthBarIntel
+  - ResultWin
+  - ResultLose
   layers:
   - Default
   - TransparentFX

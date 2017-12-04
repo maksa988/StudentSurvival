@@ -37,9 +37,10 @@ public class BulletOcenka : MonoBehaviour
     {
         Unit unit = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
 
-        if (unit && unit.gameObject != parent)
+        if (collider.tag == "Player")
         {
             Destroy(gameObject);
+            unit.ReceiveDamage();
         }
     }
 }
