@@ -102,7 +102,7 @@ public class Character : Unit
     {
         Vector3 direction = transform.right * Input.GetAxis("Horizontal");
 
-        float localSpeed = this.speed + this.sleep;
+        float localSpeed = this.speed + this.sleep*0.3f;
 
         transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, localSpeed * Time.deltaTime);
         sprite.flipX = direction.x < 0.0F;
