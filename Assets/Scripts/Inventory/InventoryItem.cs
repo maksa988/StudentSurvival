@@ -29,11 +29,17 @@ public class InventoryItem : MonoBehaviour {
 
     [SerializeField]
     public Item itemType;
-    
+
     public SpriteRenderer sprite;
 
     private GameObject parent;
     public GameObject Parent { set { parent = value; } get { return parent; } }
+
+    public int Count {
+        get {
+            return this.countItems;
+        }
+    }
 
     protected float speed = 10.0F;
     protected Vector3 direction;
@@ -41,13 +47,13 @@ public class InventoryItem : MonoBehaviour {
 
     public void AddOneMore()
     {
-
+        this.countItems++;
     }
 
     public void Action()
     {
-        if (this.itemUsingType == ItemTypes.Dropable) this.Drop();
-        if (this.itemUsingType == ItemTypes.Usable) this.Use();
+        Debug.Log("USE");
+        this.Use();
     }
 
     public virtual void Use()

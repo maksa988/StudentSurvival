@@ -7,6 +7,7 @@ public class ItemBook : InventoryItem
     private void Awake()
     {
         this.sprite = GetComponent<SpriteRenderer>();
+        this.itemUsingType = ItemTypes.Usable;
     }
 
     public override void Use()
@@ -15,13 +16,6 @@ public class ItemBook : InventoryItem
         Character player = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
         player.Intelligence += 1;
 
-        if (countItems >= 2)
-        {
-            //текст изменяем на кол-во
-        }
-        else
-        {
-            //Destroy(gameObject);
-        }
+        base.Use();
     }
 }

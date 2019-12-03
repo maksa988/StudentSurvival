@@ -5,10 +5,12 @@ using UnityEngine;
 public class ItemLab : InventoryItem
 {
     private bool shooting = false;
+    
 
     private void Awake()
     {
         this.sprite = GetComponent<SpriteRenderer>();
+        this.itemUsingType = ItemTypes.Dropable;
     }
 
     private void Update()
@@ -23,13 +25,6 @@ public class ItemLab : InventoryItem
         this.Parent = GameObject.FindGameObjectWithTag("Player");
         this.Direction = this.transform.right * (sprite.flipX ? -1.0F : 1.0F);
 
-        //if (countItems >= 2)
-        //{
-        //    //текст изменяем на кол-во
-        //}
-        //else
-        //{
-        //    Destroy(gameObject);
-        //}
+        base.Use();
     }
 }

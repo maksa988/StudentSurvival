@@ -23,6 +23,7 @@ TagManager:
   - HealthBarIntel
   - ResultWin
   - ResultLose
+  - ResultText
   layers:
   - Default
   - TransparentFX

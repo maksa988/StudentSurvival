@@ -1,0 +1,37 @@
+﻿<Properties StartupConfiguration="{CC5E2232-C4B2-DA7D-5EAE-940A856CF323}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Inventory/LootBoxItem.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Inventory/InventoryController.cs" Line="97" Column="10" />
+      <File FileName="Assets/Scripts/Character.cs" Line="32" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/Items/ItemShaverma.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/InventoryItem.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/LootBoxItem.cs" Line="29" Column="6" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="StudentSurvival" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="Inventory" expanded="True">
+                  <Node name="Items" expanded="True" />
+                  <Node name="LootBoxItem.cs" selected="True" />
+                </Node>
+                <Node name="Timers" expanded="True">
+                  <Node name="Providers" expanded="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="924e2d54-7cf3-4cf4-bc94-350b932bf22d" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

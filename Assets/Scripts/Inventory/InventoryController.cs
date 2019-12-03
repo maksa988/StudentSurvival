@@ -18,43 +18,50 @@ public class InventoryController : MonoBehaviour {
     private void Update() {
         if (Input.GetButton("LootBar Item 1"))
         {
-            this.items[0].Action();
-            HideItem(0);
+            this.InventoryItemUse(0);
         }
         if (Input.GetButton("LootBar Item 2"))
         {
-            this.items[1].Action();
-            HideItem(1);
+            this.InventoryItemUse(1);
         }
         if (Input.GetButton("LootBar Item 3"))
         {
-            this.items[2].Action();
-            HideItem(2);
+            this.InventoryItemUse(2);
         }
         if (Input.GetButton("LootBar Item 4"))
         {
-            this.items[3].Action();
-            HideItem(3);
+            this.InventoryItemUse(3);
         }
         if (Input.GetButton("LootBar Item 5"))
         {
-            this.items[4].Action();
-            HideItem(4);
+            this.InventoryItemUse(4);
         }
     }
 
     private void InventoryItemUse(int index)
     {
-        Debug.Log("Нажали кнопочку" + index);
-        Debug.Log("Count k: " + this.items.Count);
-        Debug.Log(this.items.Count > index);
-        Debug.Log(this.items[1]);
         if (this.items.Count > index)
         {
-            Debug.Log("index" + index);
-            Debug.Log(this.items[index]);
-            if (this.items[index] == null) return;
-            this.items[index].Action();
+            //Debug.Log("index: " + index);
+            //Debug.Log("null: " + (this.items[index] == null));
+            //Debug.Log("count: " + this.items[index].Count);
+
+            if (this.items[index] != null)
+            {
+                this.items[index].Action();
+                this.HideItem(index);
+                return;
+            } else
+            {
+                this.HideItem(index);
+                return;
+            }
+
+            if (this.items[index].Count <= 0)
+            {
+                this.HideItem(index);
+                return;
+            }
         }
     }
 
@@ -96,8 +103,14 @@ public class InventoryController : MonoBehaviour {
 
     private void HideItem(int index)
     {
-        GameObject other = GameObject.FindGameObjectsWithTag("InventoryItems")[8 - index];other.GetComponent<Renderer>().enabled = true;
-        other.GetComponent<Renderer>().enabled = false;
+        GameObject other = GameObject.FindGameObjectsWithTag("InventoryItems")[8 - index];
+        if(other.GetComponent<Renderer>() != null)
+        {
+            other.GetComponent<Renderer>().enabled = true;
+            other.GetComponent<Renderer>().enabled = false;
+
+            Destroy(other.GetComponent<Renderer>());
+        }
     }
 
     private void DrawOnLootBox(int index, InventoryItem pickedItem)

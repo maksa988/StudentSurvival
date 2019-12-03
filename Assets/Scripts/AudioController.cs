@@ -42,7 +42,7 @@ public class AudioController : MonoBehaviour {
 
     public void Stop()
     {
-        if(this.audioSource.isPlaying)
+        if(this.audioSource.isPlaying || true)
         {
             this.audioSource.Stop();
         }

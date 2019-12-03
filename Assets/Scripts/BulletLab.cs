@@ -19,7 +19,9 @@ public class BulletLab : MonoBehaviour
 
     private void Awake()
     {
-        sprite = GetComponentInChildren<SpriteRenderer>();
+        GameObject gObject = this.transform.GetChild(0).gameObject;
+        gObject.SetActive(true);
+        sprite = gObject.GetComponent<SpriteRenderer>();
     }
 
     private void Start()

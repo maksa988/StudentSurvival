@@ -12,7 +12,7 @@ public enum CharState
 public class Character : Unit
 {
     [SerializeField]
-    private int sleep = 5;
+    private int sleep = 10;
     [SerializeField]
     private int intelligence = 5;
 
@@ -48,9 +48,12 @@ public class Character : Unit
         }
         set
         {
-            Debug.Log(value);
             this.sleep = value;
-            this.sleepText.text = "Сон: " + this.sleep; 
+            this.sleepText.text = "Сон: " + this.sleep;
+
+            if(this.sleep < 1) {
+                this.Lose();
+            }
         }
     }
 
@@ -65,6 +68,11 @@ public class Character : Unit
         {
             this.intelligence = value;
             this.intelText.text = "Інтелект: " + this.intelligence;
+
+            if (this.intelligence < 1)
+            {
+                this.Lose();
+            }
         }
     }
 
@@ -73,6 +81,8 @@ public class Character : Unit
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         sprite = GetComponentInChildren<SpriteRenderer>();
+
+        this.sleep = 10;
 
         this.sleepText = GameObject.FindGameObjectWithTag("HealthBarSleep").GetComponent<Text>();
         this.intelText = GameObject.FindGameObjectWithTag("HealthBarIntel").GetComponent<Text>();
@@ -102,7 +112,7 @@ public class Character : Unit
     {
         Vector3 direction = transform.right * Input.GetAxis("Horizontal");
 
-        float localSpeed = this.speed + this.sleep;
+        float localSpeed = this.speed + (this.sleep < 0 ? 0 : this.sleep);
 
         transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, localSpeed * Time.deltaTime);
         sprite.flipX = direction.x < 0.0F;
@@ -112,8 +122,11 @@ public class Character : Unit
 
     private void Shoot()
     {
-        Vector3 position = transform.position; position.y += 1.5F;
+        Vector3 position = transform.position;
+        position.y += 1.5F;
         BulletLab newBullet = Instantiate(bullet, position, bullet.transform.rotation) as BulletLab;
+
+        this.Sleep--;
 
         newBullet.Parent = gameObject;
         newBullet.Direction = newBullet.transform.right * (sprite.flipX ? -1.0F : 1.0F);
@@ -126,8 +139,9 @@ public class Character : Unit
 
     private void Action()
     {
-        foreach(GameObject other in GameObject.FindGameObjectsWithTag("TeleportEnters"))
+        foreach (GameObject other in GameObject.FindGameObjectsWithTag("TeleportEnters"))
         {
+
             Teleport teleport = other.GetComponent<Teleport>();
 
             if (teleport.NearDoors)
@@ -145,7 +159,7 @@ public class Character : Unit
 
     private void CheckGround()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.3F);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.1F);
 
         isGrounded = colliders.Length > 1;
 
@@ -161,11 +175,9 @@ public class Character : Unit
         
         if(this.Intelligence <= 0)
         {
-            //Loose
+            this.Lose();
             Destroy(gameObject);
         }
-
-        Debug.Log(this.Intelligence);
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -177,5 +189,10 @@ public class Character : Unit
             if (Mathf.Abs(unit.transform.position.x - transform.position.x) < 0.3F) ReceiveDamage();
             else unit.ReceiveDamage();
         }
+    }
+
+    protected void Lose()
+    {
+        GameObject.FindGameObjectWithTag("ResultText").GetComponent<Text>().text = "Ви програли 😔";
     }
 }

@@ -11,6 +11,7 @@ public class FadeLoaderTimer : AbstractTimeProvider
 
     public override void Awake()
     {
+        Debug.Log("FADE LOADER");
         this.fadeLoader = GameObject.FindGameObjectWithTag("FadeLoader").GetComponent<Image>();
     }
 

@@ -7,6 +7,7 @@ public class ItemShaverma : InventoryItem {
     private void Awake()
     {
         this.sprite = GetComponent<SpriteRenderer>();
+        this.itemUsingType = ItemTypes.Usable;
     }
 
 	public override void Use()
@@ -15,12 +16,6 @@ public class ItemShaverma : InventoryItem {
         Character player = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
         player.Sleep += 1;
 
-        if (countItems >= 2)
-        {
-            //текст изменяем на кол-во
-        } else
-        {
-            //Destroy(gameObject);
-        }
+        base.Use();
     }
 }

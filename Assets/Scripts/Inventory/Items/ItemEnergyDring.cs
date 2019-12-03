@@ -8,6 +8,7 @@ public class ItemEnergyDring : InventoryItem
     private void Awake()
     {
         this.sprite = GetComponent<SpriteRenderer>();
+        this.itemUsingType = ItemTypes.Usable;
     }
 
     public override void Use()
@@ -17,13 +18,6 @@ public class ItemEnergyDring : InventoryItem
         player.Sleep += 1;
         player.speed += 1F;
 
-        if (countItems >= 2)
-        {
-            //текст изменяем на кол-во
-        }
-        else
-        {
-            //Destroy(gameObject);
-        }
+        base.Use();
     }
 }
